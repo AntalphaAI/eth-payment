@@ -144,7 +144,7 @@ def generate_payment_link(
 
 def generate_qr_code(link: str, output_path: str) -> Dict[str, Any]:
     """
-    Generate QR code for payment link using npx qrcode.
+    Generate QR code for payment link using Python qrcode library.
     
     Args:
         link: URL to encode
@@ -159,28 +159,38 @@ def generate_qr_code(link: str, output_path: str) -> Dict[str, Any]:
         os.makedirs(output_dir, exist_ok=True)
     
     try:
-        result = subprocess.run(
-            ["npx", "qrcode", "-t", "png", "-o", output_path, link],
-            capture_output=True,
-            text=True,
-            timeout=30
-        )
+        import qrcode
+        from PIL import Image
         
-        if result.returncode == 0 and os.path.exists(output_path):
+        # Create QR code
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+        qr.add_data(link)
+        qr.make(fit=True)
+        
+        # Generate image
+        img = qr.make_image(fill_color="black", back_color="white")
+        img.save(output_path)
+        
+        if os.path.exists(output_path):
             return {
                 "success": True,
                 "qr_path": output_path,
-                "method": "npx-qrcode"
+                "method": "python-qrcode"
             }
         else:
             return {
                 "success": False,
-                "error": f"QR generation failed: {result.stderr}"
+                "error": "QR file was not created"
             }
-    except subprocess.TimeoutExpired:
+    except ImportError:
         return {
             "success": False,
-            "error": "QR generation timed out"
+            "error": "qrcode or PIL not installed. Run: pip install qrcode pillow"
         }
     except Exception as e:
         return {
