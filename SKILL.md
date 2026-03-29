@@ -1,6 +1,6 @@
 ---
 name: eth-payment
-version: 1.0.3
+version: 1.0.4
 description: Generate EIP-681 Ethereum payment links and QR codes for any EVM chain. Zero configuration, instant setup for receiving ETH and ERC-20 payments. Use when you need to create payment requests, invoices, donation links, or any on-chain payment request. Supports Base, Ethereum, Arbitrum, Optimism, Polygon.
 author: Antalpha AI Team
 metadata:
@@ -34,13 +34,15 @@ Generate EIP-681 compliant payment links that work with MetaMask and other Ether
 ### Prerequisites
 
 - **Python 3.8+** - Required to run the script
-- **Node.js (optional)** - Required only for QR code generation (`npx qrcode`)
+- **pip packages**: `qrcode`, `pillow` - For QR code generation
 
 ### Quick Install
 
-No additional dependencies needed! The skill uses:
-- Python standard library only
-- `npx qrcode` for QR codes (auto-downloads on first use)
+Install the required packages:
+
+```bash
+pip install qrcode pillow
+```
 
 ### Run the Skill
 
@@ -155,7 +157,7 @@ Output:
 
 1. **EIP-681 Standard**: Uses the Ethereum Improvement Proposal 681 format for payment links
 2. **Universal**: Same code works on any EVM chain - only configuration differs
-3. **QR Codes**: Generated locally via `npx qrcode`, no external services
+3. **QR Codes**: Generated locally via Python qrcode library, no external services
 
 ## Security Notes
 
