@@ -1,6 +1,14 @@
 ---
 name: eth-payment
+version: 1.0.2
 description: Generate EIP-681 Ethereum payment links and QR codes for any EVM chain. Zero configuration, instant setup for receiving ETH and ERC-20 payments. Use when you need to create payment requests, invoices, donation links, or any on-chain payment request. Supports Base, Ethereum, Arbitrum, Optimism, Polygon.
+author: Antalpha AI Team
+metadata:
+  requires:
+    - python3
+    - node
+  install:
+    type: instruction-only
 ---
 
 # ETH Payment Skill
@@ -182,5 +190,5 @@ To add a new EVM chain, edit `config/chains.json`:
 
 ---
 
-**Maintainer**: Web3 Investor Team  
+**Maintainer**: Antalpha AI Team
 **License**: MIT
