@@ -29,6 +29,12 @@ ETH Payment is an OpenClaw skill that generates **EIP-681 compliant payment link
 openclaw skill install https://github.com/AntalphaAI/eth-payment
 ```
 
+### Install via ClawHub
+
+```bash
+clawhub install evm-payment
+```
+
 ### Prerequisites
 
 - **Python 3.8+**
