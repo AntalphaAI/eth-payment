@@ -196,6 +196,12 @@ ETH Payment 是一个 OpenClaw 技能，用于生成兼容 MetaMask 和其他以
 openclaw skill install https://github.com/AntalphaAI/eth-payment
 ```
 
+### 通过 ClawHub 安装
+
+```bash
+clawhub install evm-payment
+```
+
 ### 前置依赖
 
 - **Python 3.8+**
